@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="charts" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef4de5e3-7318-42b7-b7c8-7de4e1537501">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="ds_charts" uuid="9c8fe852-23da-40e9-966b-f14668ef4ef2">
+		<queryString language="SQL">
+			<![CDATA[select * from tb_pessoa p inner join tb_endereco e on p.id_pessoa = e.id_pessoa
+inner join tb_profissao pro on pro.id_profissao = p.id_profissao inner join tb_area a on
+a.id_area = pro.id_area;]]>
+		</queryString>
+		<field name="id_pessoa" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nome" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="salario" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="dt_nascimento" class="java.sql.Timestamp">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="imagem" class="java.lang.Object">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="id_profissao" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="id_endereco" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="logradouro" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="numero" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cep" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="complemento" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="descricao" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="id_area" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="descricao_area" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<variable name="variable1" class="java.lang.Float" resetType="None" calculation="Sum">
+			<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="Dataset 1" uuid="3beed5ea-13be-447c-93f9-5d6c62b15fcf">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     sum(p.salario) AS sumSalario,
+     p.`nome`,
+     pro.`descricao` AS sumSalario,
+     a.`descricao_area`,pro.`descricao`
+FROM
+     `tb_pessoa` p INNER JOIN `tb_endereco` e ON p.`id_pessoa` = e.`id_pessoa`
+     INNER JOIN `tb_profissao` pro ON p.`id_profissao` = pro.`id_profissao`
+     INNER JOIN `tb_area` a ON pro.`id_area` = a.`id_area`
+GROUP BY
+     a.descricao_area]]>
+		</queryString>
+		<field name="sumSalario" class="java.math.BigDecimal"/>
+		<field name="nome" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="descricao_area" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="descricao" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Bytes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_area" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     *
+FROM
+     `tb_pessoa` p INNER JOIN `tb_endereco` e ON p.`id_pessoa` = e.`id_pessoa`
+     INNER JOIN `tb_profissao` pro ON p.`id_profissao` = pro.`id_profissao`
+     INNER JOIN `tb_area` a ON pro.`id_area` = a.`id_area` group by a.descricao_area]]>
+	</queryString>
+	<field name="id_pessoa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="salario" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nascimento" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="imagem" class="java.lang.Object">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_profissao" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_endereco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="logradouro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="complemento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_area" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricao_area" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="variable1" class="java.lang.Float" incrementType="Report" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="79" uuid="60c72dbe-0933-47eb-b9d9-5aa065a47b55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Georgia" size="46"/>
+				</textElement>
+				<text><![CDATA[SubReports]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="249" y="30" width="100" height="20" uuid="b6172607-f560-49a9-aa59-a37e9d1a2b62"/>
+				<text><![CDATA[Áreas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="169" splitType="Stretch">
+			<textField>
+				<reportElement x="249" y="0" width="100" height="20" uuid="eff7b293-a6d9-4a0e-ae4d-d2e997980d05"/>
+				<textFieldExpression><![CDATA[$F{descricao_area}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="263" y="69" width="200" height="100" uuid="4ffc345a-cac6-4e1c-bb3f-dfdfba141e46"/>
+				<subreportParameter name="id_areateste">
+					<subreportParameterExpression><![CDATA[$F{id_area}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "charts_subreport3.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="129" splitType="Stretch">
+			<elementGroup/>
+		</band>
+	</summary>
+</jasperReport>
